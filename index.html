@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mandi Afandi Dash</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js"></script>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Isometric diner chaos</p>
+        <h1>Mandi Afandi Dash</h1>
+        <p class="lede">Seat guests, take orders, run plates, and keep the rush happy in this Phaser-powered diner dash.</p>
+      </div>
+      <div class="cta">
+        <button id="startBtn">Launch Diner</button>
+        <span class="hint">Runs entirely in your browser. Replace assets in <code>/assets</code> for your own look.</span>
+      </div>
+    </header>
+
+    <main>
+      <div id="game-container" class="game-shell">
+        <div class="placeholder">Press <strong>Launch Diner</strong> to start.</div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/utils/Pathfinding.js"></script>
+  <script src="js/objects/Waiter.js"></script>
+  <script src="js/objects/Customer.js"></script>
+  <script src="js/objects/Table.js"></script>
+  <script src="js/objects/OrderManager.js"></script>
+  <script src="js/objects/LevelManager.js"></script>
+  <script src="js/scenes/BootScene.js"></script>
+  <script src="js/scenes/PreloadScene.js"></script>
+  <script src="js/scenes/MenuScene.js"></script>
+  <script src="js/scenes/GameScene.js"></script>
+  <script src="js/scenes/UIScene.js"></script>
+</body>
+</html>

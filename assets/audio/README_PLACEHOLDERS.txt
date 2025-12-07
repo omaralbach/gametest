@@ -1,0 +1,1 @@
+No binary audio ships with the repo; sounds are generated at runtime so browsers never complain about unsupported binaries. Add your custom WAV/MP3 audio here (click, serve, success, fail, bgm_loop) using the filenames referenced in README.md.
