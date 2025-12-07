@@ -110,6 +110,14 @@ class PreloadScene extends Phaser.Scene {
   }
 
   ensureFallbackTextures() {
+    const lightenColor = (hex, amount = 0.12) => {
+      const base = Phaser.Display.Color.HexStringToColor(hex);
+      const hsl = Phaser.Display.Color.RGBToHSL(base.red, base.green, base.blue);
+      const l = Phaser.Math.Clamp(hsl.l + amount, 0, 1);
+      const rgb = Phaser.Display.Color.HSLToColor(hsl.h, hsl.s, l);
+      return rgb.rgba;
+    };
+
     const makeRoundedRect = (w, h, gradientStops, stroke, shadow) => {
       const canvas = document.createElement('canvas');
       canvas.width = w;
@@ -149,9 +157,9 @@ class PreloadScene extends Phaser.Scene {
       }
     };
 
-    const waiter = this.drawCharacter('#f8d19b', '#8b5a2b');
-    const customer1 = this.drawCharacter('#7ac7ff', '#1b4d89');
-    const customer2 = this.drawCharacter('#ff9ecf', '#9c2f63');
+    const waiter = this.drawCharacter('#f8d19b', '#8b5a2b', lightenColor);
+    const customer1 = this.drawCharacter('#7ac7ff', '#1b4d89', lightenColor);
+    const customer2 = this.drawCharacter('#ff9ecf', '#9c2f63', lightenColor);
     const tableEmpty = this.drawTable(['#c58c53', '#8e5b2a'], '#3c220c', false);
     const tableOccupied = this.drawTable(['#b56c3c', '#8e4b1c'], '#3c220c', true);
     const tableDirty = this.drawTable(['#8d6b46', '#5b3b1f'], '#3c220c', true, true);
@@ -339,7 +347,7 @@ class PreloadScene extends Phaser.Scene {
     tiltAndShadow('button_pause', 'button_pause_glow', { width: 100, height: 100, iso: false, shadow: { color: 'rgba(0,0,0,0.35)', blur: 10, y: 6 }, anchorY: 0.5 });
   }
 
-  drawCharacter(fill, stroke) {
+  drawCharacter(fill, stroke, lightenColor = (hex) => hex) {
     const canvas = document.createElement('canvas');
     canvas.width = 64;
     canvas.height = 82;
@@ -350,7 +358,7 @@ class PreloadScene extends Phaser.Scene {
     ctx.fill();
 
     const bodyGrd = ctx.createLinearGradient(0, 8, 0, 64);
-    bodyGrd.addColorStop(0, Phaser.Display.Color.Lighten(Phaser.Display.Color.HexStringToColor(fill), 10).rgba);
+    bodyGrd.addColorStop(0, lightenColor(fill));
     bodyGrd.addColorStop(1, fill);
     ctx.fillStyle = bodyGrd;
     ctx.strokeStyle = stroke;
