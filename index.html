@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mandi Afandi Diner Rush</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top-bar">
+    <div class="title">Mandi Afandi Diner Rush</div>
+    <div class="top-info">
+      <span id="score">Score: 0</span>
+      <span id="round">Rush Time: 0s</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel dining">
+      <h2>Dining Area</h2>
+      <div id="customers" class="customer-list"></div>
+    </section>
+
+    <section class="panel kitchen">
+      <h2>Kitchen Controls</h2>
+      <div id="menuButtons" class="menu-buttons"></div>
+      <div class="tray-section">
+        <div class="tray-label">Prepared Tray:</div>
+        <div id="tray" class="tray"></div>
+        <div class="tray-actions">
+          <button id="clearTray" class="secondary">Clear Tray</button>
+          <button id="serve" class="primary">Serve Selected</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="panel log-panel">
+    <h2>Rush Log</h2>
+    <div id="log" class="log"></div>
+  </section>
+
+  <script src="game.js"></script>
+</body>
+</html>
