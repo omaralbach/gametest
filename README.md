@@ -43,11 +43,11 @@ assets/
 ```
 
 ## Replacing placeholder art & sounds
-All placeholder sprites and tones are generated in `PreloadScene` so you can open the game without shipping binary assets. The `/assets` folders only contain small text README placeholders so you never see "binary files not supported" when browsing. Drop your own files into `/assets` using the filenames listed below (or update the loader paths to match your art):
+The game now **first tries to load real textures and sounds from `/assets`**, so you can drop in your own high-quality Mandi Afandi dishes and UI right away. If any file is missing, `PreloadScene` auto-generates layered canvas textures and tone beeps so the game still boots without binary downloads.
 
-- **Sprites**: waiter.png, customer_1.png, customer_2.png, table_empty.png, table_occupied.png, table_dirty.png, floor_tiles.png, wall_tile.png, kitchen_counter.png, order_icons.png (32x32 frames).
-- **UI**: button_start.png, button_pause.png, star_empty.png, star_filled.png, panel.png.
-- **Audio**: click.wav, serve.wav, success.wav, fail.wav, bgm_loop.mp3. Cues are short WAV beeps and a soft background tone saved with an `.mp3` extension by default. Swap in your own clips while keeping the same filenames, or point the loaders in `PreloadScene` to new ones.
+- **Sprites** (looked up first): waiter.png, customer_1.png, customer_2.png, table_empty.png, table_occupied.png, table_dirty.png, floor_tiles.png, wall_tile.png, kitchen_counter.png, order_icons.png (32x32 frames). Missing ones fall back to glossy, shaded canvas art.
+- **UI**: button_start.png, button_pause.png, star_empty.png, star_filled.png, panel.png (falls back to neon-glass gradients if absent).
+- **Audio**: click.wav, serve.wav, success.wav, fail.wav, bgm_loop.mp3. Each has a built-in synthetic beep/tone as a secondary source, so silence is the worst case.
 - If you change dimensions, tweak scaling in `GameScene` (tables, floor tiles) or update the sprite sheet frame sizes in `PreloadScene`.
 
 ## Customizing gameplay
